@@ -1,0 +1,7 @@
+.categories a {
+  text-decoration: none;
+}
+
+.categories a:hover {
+  text-decoration: underline;
+}
