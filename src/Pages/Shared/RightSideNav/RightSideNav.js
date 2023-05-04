@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, ButtonGroup, Carousel, ListGroup } from 'react-bootstrap';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import img2 from '../../../assests/img/Gruppe_-38.png';
+import img1 from '../../../assests/img/co-branding.jpg';
 
 const RightSideNav = () => {
     return (
@@ -30,18 +32,18 @@ const RightSideNav = () => {
 
             <div className='mt-4'>
                 <h5>Our Partners</h5>
-                <Carousel fade>
+                <Carousel className='carousel-inner rounded-6' fade>
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
+                        src={img1}
                         alt="First slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
+                        src={img2}
                         alt="Second slide"
                         />
                     </Carousel.Item>

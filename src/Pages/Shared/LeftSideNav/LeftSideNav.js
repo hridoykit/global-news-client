@@ -6,22 +6,18 @@ const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
-        .then(res =>res.json())
-        .then(data =>setCategories(data))
+        fetch('http://localhost:5000/news-categories')
+            .then(res => res.json())
+            .then(data => setCategories(data))
     }, []);
     
     return (
         <div>
-            <h4>All Categories: {categories.length}</h4>
+            <h4>All Categories{/* : {categories.length} */}</h4>
             {
                 categories.map(category =>
-                    <p className='categories'>
-                        <Link
-                            key={category.id}
-                            to={`/category/${category.id}`}>
-                                {category.name}
-                         </Link>
+                    <p key={category.id} className='categories'>
+                        <Link as={Link} to={`/category/${category.id}`}> {category.name} </Link>
                     </p>
                 )
             }  
