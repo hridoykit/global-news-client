@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <h3>this is home, place for ghum: {allNews.length}</h3>
             {
-                allNews.map(news => <NewsSummaryCard news={news} key={news._id} />)
+                allNews.map(news => <NewsSummaryCard key={news._id} news={news} />)
             }
         </div>
     );

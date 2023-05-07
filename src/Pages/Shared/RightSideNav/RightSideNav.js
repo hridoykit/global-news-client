@@ -6,9 +6,9 @@ import img1 from '../../../assests/img/co-branding.jpg';
 
 const RightSideNav = () => {
     return (
-        <>
+        <div className="sticky-top">
             <ButtonGroup vertical>
-                <Button className='mb-2 justify-content-center' variant="outline-primary"><FaGoogle /> Login with Google</Button>
+                <Button className='mb-2' variant="outline-primary"><FaGoogle /> Login with Google</Button>
                 <Button variant="outline-dark"><FaGithub /> Login with Github</Button>
             </ButtonGroup>
 
@@ -30,7 +30,7 @@ const RightSideNav = () => {
 
             {/* <-----brand carousel section-----> */}
 
-            <div className='mt-4'>
+            <div className='mt-4 mb-4'>
                 <h5>Our Partners</h5>
                 <Carousel className='carousel-inner rounded-6' fade>
                     <Carousel.Item>
@@ -49,7 +49,7 @@ const RightSideNav = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
-         </>
+         </div>
     );
 };
 
