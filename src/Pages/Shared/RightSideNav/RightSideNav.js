@@ -5,6 +5,7 @@ import img2 from '../../../assests/img/Gruppe_-38.png';
 import img1 from '../../../assests/img/co-branding.jpg';
 
 const RightSideNav = () => {
+
     return (
         <div className="sticky-top">
             <ButtonGroup vertical>
