@@ -14,9 +14,15 @@ const AuthProvider = ({children}) => {
     };
     
     useEffect(() =>{
-        onAuthStateChanged(auth, (currentUser) =>{
+        
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
+            // console.log(currentUser)
             setUser(currentUser);
-        })
+        });
+
+        return () =>{
+            unsubscribe();
+        }
     }, []);
 
     //const authInfo = {user, googleSignIn};

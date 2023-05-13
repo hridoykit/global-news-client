@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
@@ -39,8 +40,14 @@ const Header = () => {
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">{user.name}</a>
+            Signed in as: <a href="#login">{user?.displayName}</a>
           </Navbar.Text>
+
+          {/* --display user profile photo-- */}
+          {
+            user?.photoURL ?
+            <Image className="ms-2" roundedCircle height={30} width={30} src={user.photoURL}/> : <FaUserAlt className="ms-2" />
+          }
         </Navbar.Collapse>
       </Container>
     </Navbar>
