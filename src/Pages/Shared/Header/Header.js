@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
-import { Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 
 const Header = () => {
-  const {user} = useContext(AuthContext);
+  const {user, userSignOut} = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    userSignOut()
+      .then(res => {
+        //Sign-out successful.
+      })
+      .catch(err => {console.error(err)});
+  };
 
   return (
     <Navbar bg="light" className="d-block" expand="lg">
@@ -39,14 +47,31 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">{user?.displayName}</a>
-          </Navbar.Text>
+
+          {/* toggle with  */}
+
+          {
+            user?.uid ?
+            <>
+              <Navbar.Text>
+                Signed in as: <a href="#login">{user?.displayName}</a>
+              </Navbar.Text>
+              <Button onClick={handleSignOut} className="ms-2" variant="outline-danger" size="sm">Sign Out</Button>
+            </>
+            :
+            <>
+              <Link to='/signin'>Sign In</Link>
+              <Link to='/signup'>Sign Up</Link>
+            </>
+          }
 
           {/* --display user profile photo-- */}
+
           {
             user?.photoURL ?
-            <Image className="ms-2" roundedCircle height={30} width={30} src={user.photoURL}/> : <FaUserAlt className="ms-2" />
+            <Image className="ms-2" roundedCircle height={30} width={30} src={user.photoURL} />
+            :
+            <FaUserAlt className="ms-2" />
           }
         </Navbar.Collapse>
       </Container>

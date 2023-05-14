@@ -5,6 +5,8 @@ import Main from './Layout/Main';
 import Category from './Pages/Category/Category';
 import Home from './Pages/Home/Home';
 import News from './Pages/News/News';
+import SignIn from './Pages/SignIn/SignIn';
+import SignUp from './Pages/SignUp/SignUp';
 
 function App() {
 
@@ -27,6 +29,14 @@ function App() {
           path: '/news/:id',
           element: <News />,
           loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+        },
+        {
+          path: '/signin',
+          element: <SignIn />
+        },
+        {
+          path: '/signup',
+          element: <SignUp />
         }
       ]
     }
