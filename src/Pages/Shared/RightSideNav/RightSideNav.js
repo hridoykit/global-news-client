@@ -9,14 +9,12 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const googleProvider = new GoogleAuthProvider();
 
 const RightSideNav = () => {
-    
     const {loginWithGoogle} = useContext(AuthContext);
 
     const handleLoginWithGoogle = () => {
         loginWithGoogle(googleProvider)
             .then(res =>{
                 const user = res.user;
-                console.log(user);
             })
             .catch(err =>{
                 console.error(err);

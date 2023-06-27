@@ -48,13 +48,13 @@ const Header = () => {
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
 
-          {/* toggle with  */}
+          {/* display name by toggle */}
 
           {
             user?.uid ?
             <>
               <Navbar.Text>
-                Signed in as: <a href="#login">{user?.displayName}</a>
+                Signed in as: <a href="#login"> {user?.displayName} </a>
               </Navbar.Text>
               <Button onClick={handleSignOut} className="ms-2" variant="outline-danger" size="sm">Sign Out</Button>
             </>
@@ -65,7 +65,7 @@ const Header = () => {
             </>
           }
 
-          {/* --display user profile photo-- */}
+          {/* --display profile photo-- */}
 
           {
             user?.photoURL ?
