@@ -1,11 +1,13 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext);
+    const [isChecked, setIsChecked] = useState(false);
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,6 +24,10 @@ const SignUp = () => {
             })
             .catch(err => console.error(err));
     };
+
+    const handleCheckBox = e => {
+        setIsChecked(e.target.checked);
+    }
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -51,7 +57,15 @@ const SignUp = () => {
                 <Form.Control name="password" type="password" placeholder="Password" required />
             </Form.Group>
 
-            <Button variant="primary" type="submit"> Sign Up </Button>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check
+                    onClick={handleCheckBox}
+                    type="checkbox"
+                    label={<>Agree to <Link to='/terms'>terms and conditions</Link> </>}
+                />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" disabled={!isChecked} > Sign Up </Button>
             
         </Form>
     );

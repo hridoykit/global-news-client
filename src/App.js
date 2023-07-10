@@ -7,6 +7,8 @@ import Home from './Pages/Home/Home';
 import News from './Pages/News/News';
 import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
+import TermsAndConditions from './Pages/Terms/TermsAndConditions';
+import PrivateRoute from './Routes/PrivateRoute';
 
 function App() {
 
@@ -27,7 +29,7 @@ function App() {
         },
         {
           path: '/news/:id',
-          element: <News />,
+          element: <PrivateRoute> <News /> </PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
         },
         {
@@ -37,6 +39,10 @@ function App() {
         {
           path: '/signup',
           element: <SignUp />
+        },
+        {
+          path: '/terms',
+          element: <TermsAndConditions />
         }
       ]
     }

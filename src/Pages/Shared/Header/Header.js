@@ -13,7 +13,7 @@ const Header = () => {
       .then(res => {
         //Sign-out successful.
       })
-      .catch(err => {console.error(err)});
+      .catch(err => console.error(err));
   };
 
   return (
@@ -56,12 +56,12 @@ const Header = () => {
               <Navbar.Text>
                 Signed in as: <a href="#login"> {user?.displayName} </a>
               </Navbar.Text>
-              <Button onClick={handleSignOut} className="ms-2" variant="outline-danger" size="sm">Sign Out</Button>
+              <Button onClick={handleSignOut} className="me-3" variant="outline-danger" size="sm">Sign Out</Button>
             </>
             :
             <>
-              <Link to='/signin'>Sign In</Link>
-              <Link to='/signup'>Sign Up</Link>
+              <Link className="me-3 text-decoration-none" to='/signin'>Sign in</Link>
+              <Link className="me-3 text-decoration-none" to='/signup'>Sign up</Link>
             </>
           }
 

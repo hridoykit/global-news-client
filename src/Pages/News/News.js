@@ -9,7 +9,7 @@ const News = () => {
 
     return (
         <div>
-            <h2>new news {singleNews.length} </h2>
+            <h2>newNews: {singleNews.length} </h2>
             <Card>
                 <Card.Img variant="top" src={image_url} />
                 <Card.Body>
