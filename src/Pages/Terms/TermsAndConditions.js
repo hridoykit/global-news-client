@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TermsAndConditions = () => {
+    
     return (
         <div>
             <h2>here is terms and bohut conditions: </h2>

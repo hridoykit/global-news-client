@@ -53,8 +53,8 @@ const Header = () => {
           {
             user?.uid ?
             <>
-              <Navbar.Text>
-                Signed in as: <a href="#login"> {user?.displayName} </a>
+              <Navbar.Text className="me-3">
+                Signed in as: <Link to="/profile"> {user?.displayName} </Link>
               </Navbar.Text>
               <Button onClick={handleSignOut} className="me-3" variant="outline-danger" size="sm">Sign Out</Button>
             </>
@@ -69,9 +69,9 @@ const Header = () => {
 
           {
             user?.photoURL ?
-            <Image className="ms-2" roundedCircle height={30} width={30} src={user.photoURL} />
+            <Image roundedCircle height={30} width={30} src={user.photoURL} />
             :
-            <FaUserAlt className="ms-2" />
+            <FaUserAlt />
           }
         </Navbar.Collapse>
       </Container>

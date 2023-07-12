@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const [errorMsg, setErrorMsg] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     
     const handleSubmit = e => {
@@ -21,13 +22,33 @@ const SignUp = () => {
             .then(res => {
                 const user = res.user;
                 e.target.reset();
+                setErrorMsg('');
+
+                // handleUpdateProfile(name, photo);
+                updateUserProfile({
+                    displayName: name,
+                    photoURL: photo
+                    })
+                    .then(() => {})
+                    .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
     };
 
     const handleCheckBox = e => {
         setIsChecked(e.target.checked);
-    }
+    };
+
+    //break profile here & call the func named updateUserProfile() 
+    // const handleUpdateProfile = (name, photo) => {
+    //     const profile = {
+    //         displayName: name,
+    //         photoURL: photo
+    //     };
+    //     updateUserProfile(profile)
+    //         .then(() => {})
+    //         .then(error => console.error(error));
+    // };
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -66,6 +87,10 @@ const SignUp = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit" disabled={!isChecked} > Sign Up </Button>
+
+            <Form.Text className="text-danger ms-2">
+                {errorMsg}
+            </Form.Text>
             
         </Form>
     );
