@@ -28,8 +28,9 @@ const SignUp = () => {
                 // email verification
                 verifyEmail()
                     .then(() => {})
-                    .catch(err => console.log(err))
-                toast.success("email verificatin send")
+                    .catch(err => console.log(err));
+                // added a success msg
+                toast.success("email verificatin send");
 
                 // handleUpdateProfile(name, photo);
                 updateUserProfile({
@@ -93,7 +94,7 @@ const SignUp = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit" disabled={!isChecked} > Sign Up </Button>
+            <Button variant="primary" type="submit" disabled={!isChecked} > Sign Up </Button> 
 
             <Form.Text className="text-danger ms-2">
                 {errorMsg}
