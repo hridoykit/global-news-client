@@ -19,6 +19,10 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
+    const verifyEmail = () => {
+        return sendEmailVerification(auth.currentUser);
+    };
+    
     const userSignIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
@@ -47,6 +51,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         createUser,
+        verifyEamil,
         user,
         loading,
         loginWithGoogle,
