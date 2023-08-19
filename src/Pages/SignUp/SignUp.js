@@ -3,10 +3,11 @@ import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import toast from 'react-hot-toast';
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
-    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const {createUser, verifyEmail, updateUserProfile} = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     
@@ -23,6 +24,12 @@ const SignUp = () => {
                 const user = res.user;
                 e.target.reset();
                 setErrorMsg('');
+
+                // email verification
+                verifyEmail()
+                    .then(() => {})
+                    .catch(err => console.log(err))
+                toast.success("email verificatin send")
 
                 // handleUpdateProfile(name, photo);
                 updateUserProfile({
@@ -82,7 +89,7 @@ const SignUp = () => {
                 <Form.Check
                     onClick={handleCheckBox}
                     type="checkbox"
-                    label={<>Agree to <Link to='/terms'>terms and conditions</Link> </>}
+                    label={ <> Agree to <Link to='/terms'> terms and conditions </Link> </>}
                 />
             </Form.Group>
 
