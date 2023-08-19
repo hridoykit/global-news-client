@@ -56,6 +56,7 @@ const AuthProvider = ({children}) => {
         verifyEamil,
         user,
         loading,
+        setLoading,
         loginWithGoogle,
         userSignIn,
         updateUserProfile,
